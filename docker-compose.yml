@@ -1,0 +1,17 @@
+version: '3'
+services: 
+  myapp:
+    build:
+      context: ./
+      dockerfile: dev.Dockerfile
+    container_name: ${SERVICE_NAME}
+    env_file:
+      - .env
+    working_dir: /app
+    volumes:
+      - ./:/app/:z
+      - ~/.aws/:/root/.aws
+    command: "sh bash-scripts/dev.sh"
+    user: root
+    ports:
+      - ${PORT_TO_EXPOSE}:${PORT_TO_LISTEN}
