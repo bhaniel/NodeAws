@@ -10,7 +10,7 @@ services:
     working_dir: /app
     volumes:
       - ./:/app/:z
-      - ~/.aws/:/root/.aws
+      - $HOME/.aws/:/root/.aws
     command: "sh bash-scripts/dev.sh"
     user: root
     ports:
