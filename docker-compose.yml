@@ -7,11 +7,11 @@ services:
     container_name: ${SERVICE_NAME}
     env_file:
       - .env
-    working_dir: /app
+    working_dir: /home/node/app
     volumes:
-      - ./:/app/:z
-      - $HOME/.aws/:/root/.aws
+      - ./:/home/node/app/:z
+      - $HOME/.aws/:/home/node/.aws
     command: "sh bash-scripts/dev.sh"
-    user: root
+    user: ${UID}
     ports:
       - ${PORT_TO_EXPOSE}:${PORT_TO_LISTEN}
