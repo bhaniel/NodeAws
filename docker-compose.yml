@@ -1,5 +1,5 @@
-version: '3'
-services: 
+version: "3"
+services:
   myapp:
     build:
       context: ./
@@ -7,11 +7,14 @@ services:
     container_name: ${SERVICE_NAME}
     env_file:
       - .env
-    working_dir: /home/node/app
+    working_dir: /home/node
     volumes:
-      - ./:/home/node/app/:z
+      - ./:/home/node/scripts/:z
       - $HOME/.aws/:/home/node/.aws
-    command: "sh bash-scripts/dev.sh"
+      - /home/haniel/workspace/Selina/users-service:/home/node/app/:z
+      - /home/haniel/workspace/Selina/Migration:/home/node/migration/:z
+      - /home/haniel/workspace/Selina/selina-platform:/home/node/selina-platform/:z
+    command: "sh scripts/bash-scripts/dev.sh"
     user: ${UID}
     ports:
       - ${PORT_TO_EXPOSE}:${PORT_TO_LISTEN}
