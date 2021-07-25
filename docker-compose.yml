@@ -11,9 +11,8 @@ services:
     volumes:
       - ./:/home/node/scripts/:z
       - $HOME/.aws/:/home/node/.aws
-      - /home/haniel/workspace/Selina/users-service:/home/node/app/:z
-      - /home/haniel/workspace/Selina/Migration:/home/node/migration/:z
-      - /home/haniel/workspace/Selina/selina-platform:/home/node/selina-platform/:z
+      - /home/haniel/workspace/private/:/home/node/private/:z
+      - /home/haniel/workspace/selina:/home/node/selina/:z
     command: "sh scripts/bash-scripts/dev.sh"
     user: ${UID}
     ports:
